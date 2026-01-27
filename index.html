@@ -5,6 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Catering Delicias | Eventos Corporativos y Sociales</title>
+    <link rel="icon" type="image/png" href="FaviconSomos.jpg">
+
     <meta name="description"
         content="Servicio de catering premium para eventos corporativos, sociales y celebraciones privadas. Calidad, sabor y presentación.">
 
@@ -331,6 +333,122 @@
                 display: none;
             }
         }
+
+        #casate-en-mendoza {
+            scroll-margin-top: 120px;
+        }
+
+
+        .destination-wedding {
+            background:
+                linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)),
+                url("BodaBancoLagoMontaña.jpg") center / cover no-repeat;
+            color: white;
+            text-align: center;
+        }
+
+        .destination-wedding h2 {
+            font-size: 2.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .destination-wedding p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .destination-wedding ul {
+            list-style: none;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            text-align: left;
+        }
+
+        .destination-wedding li {
+            margin-bottom: 0.8rem;
+        }
+
+        footer {
+            background: #1f1f1f;
+            color: #ccc;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .destination-wedding-actions {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .destination-wedding-actions a {
+            width: 56px;
+            height: 56px;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .destination-wedding-actions a:hover {
+            background: white;
+        }
+
+        .destination-wedding-actions img {
+            width: 26px;
+            height: 26px;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+
+
+        .destination-wedding-actions a:hover img {
+            filter: none;
+        }
+
+        .icon-instagram {
+            position: relative;
+        }
+
+        .icon-instagram img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+        }
+
+        /* Estado inicial */
+        .icon-instagram .icon-real {
+            opacity: 0;
+        }
+
+        .icon-instagram .icon-outline {
+            opacity: 1;
+        }
+
+        /* Hover */
+        .icon-instagram:hover .icon-outline {
+            opacity: 0;
+        }
+
+        .icon-instagram:hover .icon-real {
+            opacity: 1;
+        }
     </style>
 
 </head>
@@ -346,9 +464,9 @@
                 <img src="LogoGrupoSomos.jpg" alt="Catering Delicias">
             </div>
 
-            <div class="logo">SOMOS | Catering</div>
             <nav class="nav-links">
                 <a href="#servicios-ofrecemos">Servicios</a>
+                <a href="#casate-en-mendoza">Casate en Mendoza</a>
                 <a href="#contacto">Contacto</a>
             </nav>
         </div>
@@ -361,7 +479,7 @@
                 Brindamos servicios de catering premium para eventos corporativos,
                 sociales y celebraciones privadas. Nos ocupamos de todo.
             </p>
-            <a href="#contacto" class="btn">Solicitar presupuesto</a>
+            <a href="#casate-en-mendoza" class="btn">Quiero mi boda en Mendoza</a>
         </div>
     </section>
 
@@ -369,8 +487,8 @@
     <section id="servicios-ofrecemos">
         <div class="container">
             <div class="section-title">
-                <h2>SERVICIOS QUE OFRECEMOS</h2>
-                <p>Nos adaptamos a cada tipo de evento, momento y necesidad gastronómica</p>
+                <h2>Contactanos para eventos que merecen ser recordados para siempre.</h2>
+                <p>Porque cuando SOMOS parte de tu historia, tu historia se vuelve eterna.</p>
             </div>
 
             <div class="services-grid">
@@ -437,22 +555,50 @@
     </section>
 
 
-
-    <section class="testimonials">
+    <section id="casate-en-mendoza" class="destination-wedding">
         <div class="container">
-            <div class="section-title">
-                <h2>Lo que dicen nuestros clientes</h2>
+            <h2>Casate en Mendoza</h2>
+            <p>
+                Organizamos tu boda destino de principio a fin, aunque vivas en otra
+                provincia o país. Vos soñás el casamiento, nosotros lo hacemos realidad.
+            </p>
+
+            <ul>
+                <li>✔ Organización integral del evento</li>
+                <li>✔ Proveedores locales de primer nivel</li>
+                <li>✔ Gastronomía premium y experiencias únicas</li>
+                <li>✔ Coordinación completa el día del casamiento</li>
+            </ul>
+            <div class="destination-wedding-actions">
+
+                <a href="https://wa.me/5492615327004" target="_blank" aria-label="WhatsApp">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                </a>
+
+                <a href="mailto:contacto@somosrastro.com" aria-label="Email">
+                    <img src="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/outline/envelope.svg" alt="Email">
+                </a>
+
+                <a href="https://www.instagram.com/gruposomos.mdz" target="_blank" aria-label="Instagram"
+                    class="icon-instagram">
+
+                    <!-- Ícono outline (default) -->
+                    <img class="icon-outline" src="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/outline/camera.svg"
+                        alt="Instagram">
+
+                    <!-- Logo real (hover) -->
+                    <img class="icon-real" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                        alt="Instagram">
+                </a>
+
+
             </div>
 
-            <div class="testimonial">
-                <p>
-                    “El servicio fue impecable, la comida excelente y la atención de primer nivel.
-                    Todos los invitados quedaron encantados.”
-                </p>
-                <strong>— María G.</strong>
-            </div>
+        </div>
+
         </div>
     </section>
+
 
     <section id="contacto">
         <div class="container">
@@ -470,6 +616,7 @@
             </form>
         </div>
     </section>
+
 
     <footer>
         <p>© 2026 SOMOS | Catering· Todos los derechos reservados</p>
