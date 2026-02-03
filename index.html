@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="favicon-somos.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quando:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quando:wght@300;400;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <meta name="description"
         content="Servicio de catering premium para eventos corporativos, sociales y celebraciones privadas. Calidad, sabor y presentación.">
@@ -32,7 +32,7 @@
             color: var(--secondary);
             background: white;
             line-height: 1.6;
-            font-family: 'Quando', serif;
+            font-family: 'Open Sans', sans-serif;
         }
 
         h1,
@@ -52,7 +52,7 @@
         header {
             position: fixed;
             width: 100%;
-            background-color: #caa977;
+            background-color: white;
             border-bottom: 1px solid #eee;
             z-index: 100;
         }
@@ -79,14 +79,41 @@
 
         /* ---------- HERO ---------- */
         .hero {
+            position: relative;
             height: 100vh;
-            background:
-                linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)),
-                url("FotoEquipoSomos.jpg") center / cover no-repeat;
             color: white;
             display: flex;
             align-items: center;
             padding-top: 80px;
+            overflow: hidden;
+        }
+
+        .hero-slides {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+            transform: scale(1.02);
+        }
+
+        .hero-slide::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55));
+        }
+
+        .hero-slide.is-active {
+            opacity: 1;
         }
 
 
@@ -94,6 +121,8 @@
             max-width: 1200px;
             margin: auto;
             padding: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
@@ -482,6 +511,10 @@
     </header>
 
     <section class="hero">
+        <div class="hero-slides" aria-hidden="true">
+            <div class="hero-slide is-active"></div>
+            <div class="hero-slide"></div>
+        </div>
         <div class="hero-content">
             <h1>Experiencias gastronómicas para eventos inolvidables</h1>
             <p>
@@ -631,6 +664,41 @@
     <footer>
         <p>© 2026 SOMOS | Catering· Todos los derechos reservados</p>
     </footer>
+
+    <script>
+        (function () {
+            const slides = document.querySelectorAll('.hero-slide');
+            if (slides.length < 2) return;
+
+            const images = [
+                'FotoEquipoSomos.jpg',
+                'https://images.unsplash.com/photo-1498837167922-ddd27525d352',
+                'https://images.unsplash.com/photo-1555243896-c709bfa0b564'
+            ];
+
+            let current = 0;
+            let activeIndex = 0;
+
+            function setSlide(el, url) {
+                el.style.backgroundImage = `url("${url}")`;
+            }
+
+            setSlide(slides[0], images[0]);
+            setSlide(slides[1], images[1 % images.length]);
+
+            setInterval(() => {
+                const nextImageIndex = (current + 1) % images.length;
+                const nextSlideIndex = activeIndex === 0 ? 1 : 0;
+
+                setSlide(slides[nextSlideIndex], images[nextImageIndex]);
+                slides[nextSlideIndex].classList.add('is-active');
+                slides[activeIndex].classList.remove('is-active');
+
+                activeIndex = nextSlideIndex;
+                current = nextImageIndex;
+            }, 6000);
+        })();
+    </script>
 
 </body>
 
