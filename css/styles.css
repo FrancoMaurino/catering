@@ -1,474 +1,806 @@
+:root {
+    --primary: #caa977;
+    --secondary: #2f2f2f;
+    --light: #fafafa;
+    --gray: #777;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: var(--secondary);
+    background: white;
+    line-height: 1.6;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Quando', serif;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ---------- HEADER ---------- */
+header {
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #eee;
+    z-index: 100;
+}
+
+.nav {
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.nav-links a {
+    margin-left: 1.5rem;
+    font-weight: 500;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+    position: relative;
+    height: 100vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    overflow: hidden;
+}
+
+.hero-slides {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    transform: scale(1.02);
+}
+
+.hero-slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55));
+}
+
+.hero-slide.is-active {
+    opacity: 1;
+}
+
 
-        :root {
-            --primary: #caa977;
-            --secondary: #2f2f2f;
-            --light: #fafafa;
-            --gray: #777;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            color: var(--secondary);
-            background: white;
-            line-height: 1.6;
-            font-family: 'Open Sans', sans-serif;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: 'Quando', serif;
-        }
-
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* ---------- HEADER ---------- */
-        header {
-            position: fixed;
-            width: 100%;
-            background-color: white;
-            border-bottom: 1px solid #eee;
-            z-index: 100;
-        }
-
-        .nav {
-            max-width: 1200px;
-            margin: auto;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--primary);
-        }
-
-        .nav-links a {
-            margin-left: 1.5rem;
-            font-weight: 500;
-        }
-
-        /* ---------- HERO ---------- */
-        .hero {
-            position: relative;
-            height: 100vh;
-            color: white;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-            overflow: hidden;
-        }
-
-        .hero-slides {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-        }
-
-        .hero-slide {
-            position: absolute;
-            inset: 0;
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            opacity: 0;
-            transition: opacity 1.2s ease;
-            transform: scale(1.02);
-        }
-
-        .hero-slide::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55));
-        }
-
-        .hero-slide.is-active {
-            opacity: 1;
-        }
-
-
-        .hero-content {
-            max-width: 1200px;
-            margin: auto;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            max-width: 600px;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.8rem;
-            background: #caa977;
-            color: black;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        .btn:hover {
-            background: #caa977;
-        }
-
-        /* ---------- SECTIONS ---------- */
-        section {
-            padding: 5rem 1rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-title p {
-            color: var(--gray);
-        }
-
-        /* ---------- SERVICES ---------- */
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .service {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 6px;
-            text-align: center;
-        }
-
-        .service h3 {
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        /* ---------- MENU ---------- */
-        .menu-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .menu-item {
-            border: 1px solid #eee;
-            border-radius: 6px;
-            overflow: hidden;
-        }
-
-        .menu-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .menu-item div {
-            padding: 1.5rem;
-        }
-
-        /* ---------- TESTIMONIALS ---------- */
-        .testimonials {
-            background: var(--light);
-        }
-
-        .testimonial {
-            max-width: 800px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .testimonial p {
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-
-        /* ---------- CONTACT ---------- */
-        form {
-            max-width: 600px;
-            margin: auto;
-            display: grid;
-            gap: 1rem;
-        }
-
-        input,
-        textarea {
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        /* ---------- FOOTER ---------- */
-        footer {
-            background: #1f1f1f;
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            color: #ccc;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 35px rgba(0, 0, 0, 0.12);
-        }
-
-        .service-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .service-content {
-            padding: 1.5rem;
-        }
-
-        .service-content h4 {
-            margin-bottom: 1rem;
-            color: var(--primary);
-            font-size: 1.1rem;
-        }
-
-        .service-content ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .service-content li {
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        .logo img {
-            height: 40px;
-            width: auto;
-            display: block;
-        }
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 56px;
-            height: 56px;
-            background-color: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-            z-index: 999;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.08);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-        }
-
-        .whatsapp-float img {
-            width: 28px;
-            height: 28px;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .logo img {
-                height: 40px;
-            }
-        }
-
-        /* ---------- RESPONSIVE ---------- */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-        }
-
-        #casate-en-mendoza {
-            scroll-margin-top: 120px;
-        }
-
-
-        .destination-wedding {
-            background:
-                linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)),
-                url("../img/BodaBancoLagoMontaña.jpg") center / cover no-repeat;
-            color: white;
-            text-align: center;
-        }
-
-        .destination-wedding h2 {
-            font-size: 2.6rem;
-            margin-bottom: 1rem;
-        }
-
-        .destination-wedding p {
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            font-size: 1.1rem;
-        }
-
-        .destination-wedding ul {
-            list-style: none;
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-            text-align: left;
-        }
-
-        .destination-wedding li {
-            margin-bottom: 0.8rem;
-        }
-
-        footer {
-            background: #1f1f1f;
-            color: #ccc;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .destination-wedding-actions {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .destination-wedding-actions a {
-            width: 56px;
-            height: 56px;
-            border: 2px solid white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .destination-wedding-actions a:hover {
-            background: white;
-        }
-
-        .destination-wedding-actions img {
-            width: 26px;
-            height: 26px;
-            filter: brightness(0) invert(1);
-            opacity: 0.9;
-        }
-
-
-        .destination-wedding-actions a:hover img {
-            filter: none;
-        }
-
-        .icon-instagram {
-            position: relative;
-        }
-
-        .icon-instagram img {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.3s ease;
-        }
-
-        /* Estado inicial */
-        .icon-instagram .icon-real {
-            opacity: 0;
-        }
-
-        .icon-instagram .icon-outline {
-            opacity: 1;
-        }
-
-        /* Hover */
-        .icon-instagram:hover .icon-outline {
-            opacity: 0;
-        }
-
-        .icon-instagram:hover .icon-real {
-            opacity: 1;
-        }
-  
+.hero-content {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    max-width: 600px;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background: #caa977;
+    color: black;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background: #caa977;
+}
+
+/* ---------- SECTIONS ---------- */
+section {
+    padding: 5rem 1rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title h2 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.section-title p {
+    color: var(--gray);
+}
+
+/* ---------- SERVICES ---------- */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.service {
+    background: var(--light);
+    padding: 2rem;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.service h3 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+/* ---------- MENU ---------- */
+.menu-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.menu-item {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.menu-item div {
+    padding: 1.5rem;
+}
+
+/* ---------- TESTIMONIALS ---------- */
+.testimonials {
+    background: var(--light);
+}
+
+.testimonial {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+.testimonial p {
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+/* ---------- CONTACT ---------- */
+form {
+    max-width: 600px;
+    margin: auto;
+    display: grid;
+    gap: 1rem;
+}
+
+input,
+textarea {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    background: #1f1f1f;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.service-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.12);
+}
+
+.service-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.service-content {
+    padding: 1.5rem;
+}
+
+.service-content h4 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.service-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.service-content li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.whatsapp-float img {
+    width: 28px;
+    height: 28px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        height: 40px;
+    }
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
+
+#casate-en-mendoza {
+    scroll-margin-top: 120px;
+}
+
+
+.destination-wedding {
+    background:
+        linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)),
+        url("../img/BodaBancoLagoMontaña.jpg") center / cover no-repeat;
+    color: white;
+    text-align: center;
+}
+
+.destination-wedding h2 {
+    font-size: 2.6rem;
+    margin-bottom: 1rem;
+}
+
+.destination-wedding p {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+}
+
+.destination-wedding ul {
+    list-style: none;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    text-align: left;
+}
+
+.destination-wedding li {
+    margin-bottom: 0.8rem;
+}
+
+footer {
+    background: #1f1f1f;
+    color: #ccc;
+    padding: 2rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.destination-wedding-actions {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.destination-wedding-actions a {
+    width: 56px;
+    height: 56px;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.destination-wedding-actions a:hover {
+    background: white;
+}
+
+.destination-wedding-actions img {
+    width: 26px;
+    height: 26px;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+}
+
+
+.destination-wedding-actions a:hover img {
+    filter: none;
+}
+
+.icon-instagram {
+    position: relative;
+}
+
+.icon-instagram img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+}
+
+/* Estado inicial */
+.icon-instagram .icon-real {
+    opacity: 0;
+}
+
+.icon-instagram .icon-outline {
+    opacity: 1;
+}
+
+/* Hover */
+.icon-instagram:hover .icon-outline {
+    opacity: 0;
+}
+
+.icon-instagram:hover .icon-real {
+    opacity: 1;
+}
+
+#nuestras-casas .services-grid {
+    display: flex;
+    justify-content: center;
+    /* Centra el grupo de tarjetas */
+    align-items: stretch;
+    /* Obliga a que todas midan lo mismo de alto */
+    gap: 30px;
+    /* Espacio entre ellas */
+    margin: 40px auto;
+    max-width: 1200px;
+    /* Ajusta al ancho de tu web */
+    width: 90%;
+    /* Margen para pantallas chicas */
+}
+
+#nuestras-casas .service-card {
+    flex: 1;
+    /* Obliga a las 3 a ocupar el mismo ancho exacto */
+    min-width: 280px;
+    /* Evita que se aplasten demasiado */
+    max-width: 350px;
+    /* Evita que se estiren demasiado en pantallas gigantes */
+    display: flex;
+    flex-direction: column;
+    /* Alinea contenido interno verticalmente */
+    background: #fff;
+    /* O el color que uses */
+    border-radius: 8px;
+    /* Opcional: bordes redondeados */
+    overflow: hidden;
+    /* Para que la imagen no se salga de los bordes */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Opcional: para que resalten */
+}
+
+#nuestras-casas .service-card img {
+    width: 100%;
+    height: 250px;
+    /* Altura fija para que todas las fotos se vean iguales */
+    object-fit: cover;
+    /* Recorta la imagen para que llene el espacio sin deformarse */
+}
+
+/* Responsive: si la pantalla es chica, que se pongan una abajo de otra */
+@media (max-width: 900px) {
+    #nuestras-casas .services-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+.team-section {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+    /* Un gris muy tenue para diferenciarlo de las secciones blancas */
+}
+
+.team-section .intro-text {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    text-align: center;
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 380px;
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    border-top: 4px solid #d4af37;
+    /* Detalle en dorado/bronce para la elegancia */
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+}
+
+.team-card.premium {
+    border-top: 4px solid #b22222;
+    /* Un tono diferente para resaltar al Chef Michelin */
+}
+
+.team-card h3 {
+    font-family: 'Quando', serif;
+    /* Usando la fuente de tu header */
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: #222;
+}
+
+.team-card .role {
+    display: block;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #d4af37;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.team-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+.awards {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.awards span {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .team-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-card {
+        width: 90%;
+    }
+    
+    
+}
+
+/* --- ESTO VA AFUERA DE CUALQUIER MEDIA QUERY --- */
+.destination-wedding ul {
+    display: block !important;
+    width: 100%;
+    max-width: 500px; /* Ajustamos el ancho del contenedor */
+    margin: 30px auto !important;
+    padding-left: 35px !important; /* <--- Aumenté a 120px para que se note el movimiento a la derecha */
+    list-style: none !important;
+    text-align: left !important;
+}
+
+.destination-wedding li {
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    color: #fff;
+    white-space: nowrap;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Solo para celulares, para que no se desborde */
+@media (max-width: 600px) {
+    .destination-wedding ul {
+        padding-left: 20px !important;
+        max-width: 100%;
+    }
+    .destination-wedding li {
+        white-space: normal;
+    }
+}
+
+/* --- NUEVO CSS PARA FOTOS CIRCULARES --- */
+
+/* 1. Ajuste de la tarjeta contenedora */
+.team-card {
+    /* Mantenemos el padding original para que el círculo no toque los bordes */
+    padding: 40px 30px !important; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el círculo y el texto horizontalmente */
+    text-align: center;   /* Centra el texto interior */
+}
+
+/* 2. Contenedor del Círculo */
+.team-img {
+    width: 150px;  /* Ancho del círculo */
+    height: 150px; /* Alto del círculo (debe ser igual al ancho) */
+    border-radius: 50%; /* ESTO HACE EL CÍRCULO */
+    overflow: hidden;
+    margin-bottom: 25px; /* Espacio con el nombre */
+    
+    /* Opcional: Un borde fino y elegante */
+    border: 3px solid #eee; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra suave para dar relieve */
+    
+    background-color: #f0f0f0; /* Color de fondo por defecto */
+}
+
+/* 3. La Imagen dentro del Círculo */
+.team-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Importante para que no se deforme al recortar */
+    object-position: center top; /* Enfoca la cara */
+    transition: transform 0.4s ease;
+}
+
+/* Efecto hover suave */
+.team-card:hover .team-img img {
+    transform: scale(1.08);
+}
+
+/* 4. Ajuste de la info (quitamos paddings extra si los había) */
+.team-info {
+    padding: 0; 
+    flex-grow: 1;
+    width: 100%;
+}
+
+/* Ajuste específico para los awards de Sebastián para que sigan alineados a la izquierda */
+.awards {
+    text-align: left; 
+    display: inline-block; /* Mantiene el bloque centrado pero el texto a la izquierda */
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.btn-whatsapp-card {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #25d366; /* Verde WhatsApp */
+    color: white !important;
+    border-radius: 50px; /* Forma de píldora */
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-whatsapp-card img {
+    width: 18px;
+    height: 18px;
+    /* Esto hace que el logo de WA se vea blanco para matchear el texto */
+    filter: brightness(0) invert(1); 
+}
+
+.btn-whatsapp-card:hover {
+    background-color: #128c7e; /* Un verde más oscuro al pasar el mouse */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+/* Si preferís que el botón sea dorado como tu marca, usá este estilo: */
+/*
+.btn-whatsapp-card {
+    background-color: var(--primary);
+    color: black !important;
+}
+.btn-whatsapp-card img {
+    filter: none; 
+}
+*/
+.footer-social {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho para centrar */
+}
+
+.instagram-footer-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ccc; /* Gris claro por defecto para el texto y el icono */
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none; /* Quitamos el subrayado si lo tiene */
+}
+
+.instagram-footer-btn img {
+    width: 65px; /* Tamaño del icono circular */
+    height: 65px;
+    
+    /* El logo ya es circular y negro por defecto, */
+    /* pero para el footer oscuro, lo hacemos sutil: */
+    
+    /* 1. Lo hacemos gris claro/blanco para que se lea en el fondo oscuro */
+    filter: invert(0.8); /* Invertimos el color (negro -> blanco) y lo oscurecemos un poco */
+    
+    /* 2. Le damos opacidad para que no "vibre" tanto visualmente */
+    opacity: 0.7;
+    
+    transition: all 0.3s ease;
+}
+
+.instagram-footer-btn:hover {
+    color: #fff; /* El texto se vuelve blanco puro al hover */
+    background: rgba(255, 255, 255, 0.05); /* Un brillo muy suave de fondo */
+}
+
+.instagram-footer-btn:hover img {
+    /* Al hover, recuperamos el color original del logo */
+    /* Quitamos el filtro invert y la opacidad */
+    filter: invert(0); /* Vuelve a ser el negro original */
+    
+    /* O, si prefieres que sea blanco puro y brillante al hover: */
+    /* filter: invert(1); */ /* Descomenta esta línea si lo quieres blanco al hover */
+    
+    opacity: 1; /* Opacidad total al hover */
+    transform: scale(1.1); /* Un zoom suave al hover */
+}
