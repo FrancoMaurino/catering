@@ -10,13 +10,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/png" href="favicon-somos.png">
-    
+
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
+<a href="https://wa.me/5492615327004" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
 
 <body>
 
@@ -203,6 +207,26 @@
 
                 </article>
 
+                <article class="location-card">
+
+                    <div class="placeholder location-image">
+                        <img src="img/autiq.jpeg" alt="">
+                    </div>
+
+                    <div class="location-gradient"></div>
+
+                    <div class="location-name">
+                        <small>
+                            BODEGA
+                        </small>
+
+                        <strong>
+                            Autiq
+                        </strong>
+                    </div>
+
+                </article>
+
 
                 <button class="arrow">
                     ›
@@ -324,7 +348,7 @@
                     <div class="food-overlay"></div>
 
                     <span>
-                        Estaciones de pailas y cazuelas
+                        Estaciones de cazuelas
                     </span>
 
                 </article>
@@ -366,7 +390,22 @@
 
             <div class="steps-overlay"></div>
 
-            <h2>Cena o Almuerzos con Menú de Pasos</h2>
+            <!-- Flechas de navegación delicadas -->
+            <button class="steps-arrow prev" onclick="changeStepSlide(-1)" aria-label="Anterior">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <button class="steps-arrow next" onclick="changeStepSlide(1)" aria-label="Siguiente">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+
+            <h2>Almuerzos y cenas presentados en cocktail o menú de pasos.</h2>
 
             <!-- Puntos de navegación navegables -->
             <div class="dots">
@@ -391,6 +430,22 @@
                     dot.classList.toggle('active', i === index);
                 });
             }
+            let currentStepIndex = 0;
+            const totalStepSlides = 5;
+
+            // Función para cambiar de slide con las flechas (+1 o -1)
+            function changeStepSlide(direction) {
+                currentStepIndex += direction;
+
+                if (currentStepIndex >= totalStepSlides) {
+                    currentStepIndex = 0;
+                } else if (currentStepIndex < 0) {
+                    currentStepIndex = totalStepSlides - 1;
+                }
+
+                setStepSlide(currentStepIndex);
+            }
+
         </script>
 
         <!-- =====================================================
@@ -415,70 +470,35 @@
             <div class="adaptations-grid">
 
                 <article>
-
                     <div class="adaptation-icon">
-                        ✣
+                        <img src="img/Kosher.png" alt="Servicio Kosher">
                     </div>
-
-                    <h3>
-                        Servicio Kosher
-                    </h3>
-
-                    <p>
-                        Bajo certificacion y supervisión
-                    </p>
-
+                    <h3>Servicio Kosher</h3>
+                    <p>Bajo certificación y supervisión</p>
                 </article>
 
-
                 <article>
-
                     <div class="adaptation-icon">
-                        ◌
+                        <img src="img/veggie.png" alt="Veganos y vegetarianos">
                     </div>
-
-                    <h3>
-                        Veganos y vegetarianos
-                    </h3>
-
-                    <p>
-                        Menús de base vegetal de autor.
-                    </p>
-
+                    <h3>Veganos y vegetarianos</h3>
+                    <p>Menús de base vegetal de autor.</p>
                 </article>
 
-
                 <article>
-
                     <div class="adaptation-icon">
-                        ◇
+                        <img src="img/sintacc.png" alt="Sin TACC">
                     </div>
-
-                    <h3>
-                        Sin TACC
-                    </h3>
-
-                    <p>
-                        Opciones celíacas seguras.
-                    </p>
-
+                    <h3>Sin TACC</h3>
+                    <p>Opciones celíacas seguras.</p>
                 </article>
 
-
                 <article>
-
                     <div class="adaptation-icon">
-                        ◯
+                        <img src="img/dietas.png" alt="Alergias y dietas">
                     </div>
-
-                    <h3>
-                        Alergias y dietas
-                    </h3>
-
-                    <p>
-                        Manejo personalizado por invitado.
-                    </p>
-
+                    <h3>Alergias y dietas</h3>
+                    <p>Manejo personalizado por invitado.</p>
                 </article>
 
             </div>
@@ -526,12 +546,13 @@
                     </h3>
 
                     <span class="person-role">
-                        Administración General y Presidente
+                        CEO – Dirección general
                     </span>
 
                     <p>
-                        Sommelier profesional y Licenciado en Economía. Trayectoria internacional en cruceros de lujo
-                        (CUNARD) y gerenciamiento de hospitalidad en bodegas de primer nivel.
+                        Sommelier profesional y licenciado
+                        en economía. Trayectoria internacional en calidad de servicio y
+                        gerenciamiento de negocios hoteleros y gastronómicos.
                     </p>
 
                 </article>
@@ -584,7 +605,7 @@
 
                     <p>
                         Experto en logística y catering de gran escala con más de 18 años de experiencia liderando
-                        eventos corporativos y deportivos masivos.
+                        eventos corporativos y sociales masivos.
 
                     </p>
 
@@ -640,7 +661,7 @@
                 </ul>
 
                 <a href="#contacto" class="gold-button">
-                    Quiero mi boda en Mendoza
+                    Cotiza tu evento online
                 </a>
 
             </div>
@@ -722,8 +743,7 @@
             </a>
 
             <!-- WhatsApp -->
-            <a href="https://wa.me/5492615327004" target="_blank"
-                rel="noopener noreferrer">
+            <a href="https://wa.me/5492615327004" target="_blank" rel="noopener noreferrer">
                 <span>WhatsApp</span>
             </a>
             <span>Mendoza, Argentina</span>

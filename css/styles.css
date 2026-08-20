@@ -127,7 +127,7 @@ button {
 }
 
 .nav a {
-    font-size: 7px;
+    font-size: 14px;
     color: #45403a;
 
     white-space: nowrap;
@@ -202,7 +202,7 @@ button {
 }
 
 .hero-text {
-    font-size: 8px;
+    font-size: 13px;
     line-height: 1.7;
 
     color: #f0ece6;
@@ -700,6 +700,8 @@ button {
 }
 
 .adaptations-grid {
+
+
     width: 700px;
 
     max-width: 100%;
@@ -713,13 +715,20 @@ button {
     text-align: center;
 }
 
+.adaptations-grid article h3 {
+    font-size: x-large;
+}
+.adaptations-grid article p {
+    font-size: small;
+}
+
 .adaptations article {
     padding: 0 12px;
 }
 
 .adaptation-icon {
-    width: 31px;
-    height: 31px;
+    width: 51px;
+    height: 51px;
 
     margin: auto auto 10px;
 
@@ -1509,4 +1518,86 @@ html, body {
 img {
     max-width: 100%;
     height: auto;
+}
+
+/* Asegura que el contenedor permita posicionamiento absoluto */
+.steps-menu {
+    position: relative;
+}
+
+/* Estilo base de las flechas */
+.steps-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+/* Posiciones a los costados */
+.steps-arrow.prev {
+    left: 20px;
+}
+
+.steps-arrow.next {
+    right: 20px;
+}
+
+/* Efecto Hover */
+.steps-arrow:hover {
+    background: rgba(255, 255, 255, 0.35);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* Ajuste sutil para celulares */
+@media (max-width: 768px) {
+    .steps-arrow {
+        width: 36px;
+        height: 36px;
+    }
+    .steps-arrow.prev { left: 10px; }
+    .steps-arrow.next { right: 10px; }
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.whatsapp-float img {
+    width: 28px;
+    height: 28px;
 }
