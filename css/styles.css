@@ -226,7 +226,7 @@ button {
 
     border: none;
 
-    font-size: 7px;
+    font-size: 11px;
     font-weight: 500;
 }
 
@@ -1600,4 +1600,58 @@ img {
 .whatsapp-float img {
     width: 28px;
     height: 28px;
+}
+.gastronomy-carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 10px 0;
+}
+
+.gastronomy-track {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 20px;
+    will-change: transform; /* optimiza el rendimiento gráfico */
+}
+
+.food-card {
+    flex: 0 0 calc((100% - 40px) / 3) !important;
+    min-width: calc((100% - 40px) / 3);
+    height: 380px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+@media (max-width: 900px) {
+    .food-card {
+        flex: 0 0 calc((100% - 20px) / 2) !important;
+        min-width: calc((100% - 20px) / 2);
+    }
+}
+
+@media (max-width: 600px) {
+    .food-card {
+        flex: 0 0 100% !important;
+        min-width: 100%;
+    }
+}
+
+.join-team-wrapper {
+    text-align: center;
+    margin: 40px 0 20px 0;
+    font-size: 15px;
+    color: #666;
+}
+
+.join-team-link {
+    color: #c5a059; /* O el color dorado de tu sitio */
+    font-weight: 600;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.join-team-link:hover {
+    color: #000000;
 }

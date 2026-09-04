@@ -67,7 +67,7 @@
             <div class="hero-content">
 
                 <p class="hero-kicker">
-                    CÁTERING DE ALTA GAMA · MENDOZA
+                    CÁTERING CON HISTORIA · MENDOZA
                 </p>
 
                 <h1>
@@ -82,7 +82,8 @@
                     Una misma mirada, distintos escenarios.
                 </p>
 
-                <a href="#contacto" class="gold-button">
+                <a href="https://armatueventoconsomos.netlify.app/" class="gold-button" target="_blank"
+                    rel="noopener noreferrer">
                     Quiero mi evento en Mendoza
                 </a>
 
@@ -270,105 +271,134 @@
                     Estaciones gastronómicas
                 </h2>
 
-                <p>
+                <p style="font-size: 10px;">
                     Experiencias vivas al rededor de fuego, la charcutería y la coctelería de autor.
                 </p>
 
             </div>
 
 
-            <div class="gastronomy-grid">
+            <div class="gastronomy-carousel">
+                <div class="gastronomy-track">
 
-                <article class="food-card">
+                    <article class="food-card">
+                        <div class="placeholder food-image">
+                            <img src="img/e1.jpg" alt="">
+                        </div>
+                        <div class="food-overlay"></div>
+                        <span>Islas de fuego con parrillas</span>
+                    </article>
 
-                    <div class="placeholder food-image">
-                        <img src="img/e1.jpg" alt="">
-                    </div>
+                    <article class="food-card">
+                        <div class="placeholder food-image">
+                            <img src="img/e2.jpg" alt="">
+                        </div>
+                        <div class="food-overlay"></div>
+                        <span>Mesas de charcutería de autor</span>
+                    </article>
 
-                    <div class="food-overlay"></div>
+                    <article class="food-card">
+                        <div class="placeholder food-image">
+                            <img src="img/e3.jpg" alt="">
+                        </div>
+                        <div class="food-overlay"></div>
+                        <span>Estación de postres artesanales</span>
+                    </article>
 
-                    <span>
-                        Islas de fuego con parrillas
-                    </span>
+                    <article class="food-card">
+                        <div class="placeholder food-image">
+                            <img src="img/e4.jpg" alt="">
+                        </div>
+                        <div class="food-overlay"></div>
+                        <span>Barras de bebidas y coctelería</span>
+                    </article>
 
-                </article>
+                    <article class="food-card">
+                        <div class="placeholder food-image">
+                            <img src="img/e5.jpg" alt="">
+                        </div>
+                        <div class="food-overlay"></div>
+                        <span>Estaciones de cazuelas</span>
+                    </article>
 
+                    <article class="food-card">
+                        <div class="placeholder food-image">
+                            <img src="img/e6.jpg" alt="">
+                        </div>
+                        <div class="food-overlay"></div>
+                        <span>Aperitivos de bienvenida</span>
+                    </article>
 
-                <article class="food-card">
-
-                    <div class="placeholder food-image">
-                        <img src="img/e2.jpg" alt="">
-                    </div>
-
-                    <div class="food-overlay"></div>
-
-                    <span>
-                        Mesas de charcutería de autor
-                    </span>
-
-                </article>
-
-
-                <article class="food-card">
-
-                    <div class="placeholder food-image">
-                        <img src="img/e3.jpg" alt="">
-                    </div>
-
-                    <div class="food-overlay"></div>
-
-                    <span>
-                        Estación de postres artesanales
-                    </span>
-
-                </article>
-
-
-                <article class="food-card">
-
-                    <div class="placeholder food-image">
-                        <img src="img/e4.jpg" alt="">
-                    </div>
-
-                    <div class="food-overlay"></div>
-
-                    <span>
-                        Barras de bebidas y coctelería
-                    </span>
-
-                </article>
-
-
-                <article class="food-card">
-
-                    <div class="placeholder food-image">
-                        <img src="img/e5.jpg" alt="">
-                    </div>
-
-                    <div class="food-overlay"></div>
-
-                    <span>
-                        Estaciones de cazuelas
-                    </span>
-
-                </article>
-
-
-                <article class="food-card">
-
-                    <div class="placeholder food-image">
-                        <img src="img/e6.jpg" alt="">
-                    </div>
-
-                    <div class="food-overlay"></div>
-
-                    <span>
-                        Aperitivos de bienvenida
-                    </span>
-
-                </article>
-
+                </div>
             </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const track = document.querySelector('.gastronomy-track');
+                    const cards = Array.from(document.querySelectorAll('.food-card'));
+                    const carousel = document.querySelector('.gastronomy-carousel');
+
+                    if (!track || cards.length === 0) return;
+
+                    // Clonamos las tarjetas al final para lograr el loop infinito continuo sin rebobinar hacia atrás
+                    cards.forEach(card => {
+                        const clone = card.cloneNode(true);
+                        track.appendChild(clone);
+                    });
+
+                    let currentIndex = 0;
+                    let autoSlideInterval = null;
+                    let isTransitioning = false;
+
+                    function moveCarousel() {
+                        if (isTransitioning) return;
+
+                        const cardWidth = cards[0].getBoundingClientRect().width;
+                        const gap = 20; // Debe coincidir con el gap del CSS
+                        const moveAmount = cardWidth + gap;
+
+                        currentIndex++;
+                        isTransitioning = true;
+
+                        // Animación rápida y fluida de avance (0.4 segundos)
+                        track.style.transition = 'transform 0.4s ease-out';
+                        track.style.transform = `translateX(-${currentIndex * moveAmount}px)`;
+
+                        // Al terminar el movimiento, verifiamos si hay que resetear invisiblemente
+                        setTimeout(() => {
+                            if (currentIndex >= cards.length) {
+                                track.style.transition = 'none'; // Desactiva animación para que no se note
+                                currentIndex = 0;
+                                track.style.transform = 'translateX(0px)';
+                            }
+                            isTransitioning = false;
+                        }, 400); // 400ms = coincide con los 0.4s de la transición
+                    }
+
+                    function startAutoSlide() {
+                        stopAutoSlide();
+                        autoSlideInterval = setInterval(moveCarousel, 2500); // Cambia cada 2.5 segundos
+                    }
+
+                    function stopAutoSlide() {
+                        if (autoSlideInterval) clearInterval(autoSlideInterval);
+                    }
+
+                    // Iniciar auto-desplazamiento
+                    startAutoSlide();
+
+                    // Pausar al pasar el mouse por encima
+                    carousel.addEventListener('mouseenter', stopAutoSlide);
+                    carousel.addEventListener('mouseleave', startAutoSlide);
+
+                    // Ajuste de pantalla responsive
+                    window.addEventListener('resize', () => {
+                        track.style.transition = 'none';
+                        currentIndex = 0;
+                        track.style.transform = 'translateX(0px)';
+                    });
+                });
+            </script>
 
         </section>
 
@@ -456,7 +486,7 @@
 
             <div class="section-title">
 
-                <span>
+                <span style="font-size: 12px;">
                     A MEDIDA
                 </span>
 
@@ -522,7 +552,7 @@
                     El Equipo Detrás de la Experiencia
                 </h2>
 
-                <p>
+                <p style="font-size: 12px;">
                     Seba, Fran y Agus; cocina, desarrollo de proyectos y el mundo del vino reunidos en una historia de
                     excelencia.
                 </p>
@@ -549,7 +579,7 @@
                         CEO – Dirección general
                     </span>
 
-                    <p>
+                    <p style="font-size: 11px;">
                         Sommelier profesional y licenciado
                         en economía. Trayectoria internacional en calidad de servicio y
                         gerenciamiento de negocios hoteleros y gastronómicos.
@@ -574,15 +604,21 @@
                         Director Gastronómico
                     </span>
 
-                    <p>
+                    <p style="font-size: 11px;">
                         Referente de la cocina mendocina, reconocido por su trabajo con productos de estación y técnicas
                         que revolucionan el sabor.
 
                     </p>
 
-                    <p>Estrella Michelin (Guía Michelin 2024, 2025).</p>
-                    <p>The Best Chef Awards 2024, 2025.</p>
-                    <p>LATAM #97 (The World's 50 Best 2025)</p>
+                    <p style="font-size: 11px;">
+                        Estrella Michelin (Guía Michelin 2024, 2025).
+                    </p>
+                    <p style="font-size: 11px;">
+                        The Best Chef Awards 2024, 2025.
+                    </p>
+                    <p style="font-size: 11px;">
+                        LATAM #97 (The World's 50 Best 2025)
+                    </p>
 
                 </article>
 
@@ -603,7 +639,7 @@
                         Director de Eventos
                     </span>
 
-                    <p>
+                    <p style="font-size: 11px;">
                         Experto en logística y catering de gran escala con más de 18 años de experiencia liderando
                         eventos corporativos y sociales masivos.
 
@@ -629,7 +665,7 @@
 
             <div class="wedding-content">
 
-                <span class="wedding-kicker">
+                <span class="wedding-kicker" style="font-size: 11px;">
                     CASATE EN MENDOZA
                 </span>
 
@@ -639,22 +675,22 @@
                     viñedos
                 </h2>
 
-                <p>
+                <p style="font-size: 13px;">
                     Vos soñás el casamiento en los viñedos, nosotros lo
                     hacemos realidad con estándares internacionales de principio a fin.
                 </p>
 
                 <ul>
 
-                    <li>
+                    <li style="font-size: 11px;">
                         Organización integral y proveedores de primer nivel.
                     </li>
 
-                    <li>
+                    <li style="font-size: 11px;">
                         Gastronomía de autor y maridajes exclusivos.
                     </li>
 
-                    <li>
+                    <li style="font-size: 11px;">
                         Coordinación completa (Wedding Planner in-house).
                     </li>
 
@@ -678,7 +714,7 @@
 
             <div class="section-title">
 
-                <span>
+                <span style="font-size: 12px;">
                     CONTACTO
                 </span>
 
@@ -686,7 +722,7 @@
                     Construyamos un evento memorable
                 </h2>
 
-                <p>
+                <p style="font-size: 12px;">
                     Contanos qué imaginás y diseñamos la experiencia a medida.
                 </p>
 
@@ -695,18 +731,18 @@
 
             <form class="contact-form" action="https://formsubmit.co/consultas@somoscatering.com" method="POST">
 
-                <textarea placeholder="Detalles del evento"></textarea>
+                <textarea placeholder="Detalles del evento" style="font-size: 12px;"></textarea>
 
 
                 <div class="contact-fields">
 
-                    <input type="text" placeholder="Nombre y apellido">
+                    <input type="text" placeholder="Nombre y apellido" style="font-size: 12px;">
 
-                    <input type="email" placeholder="Email">
+                    <input type="email" placeholder="Email" style="font-size: 12px;">
 
-                    <input type="tel" placeholder="Teléfono">
+                    <input type="tel" placeholder="Teléfono" style="font-size: 12px;">
 
-                    <button type="submit">
+                    <button type="submit" style="font-size: 12px;">
                         ENVIAR CONSULTA
                     </button>
 
@@ -716,7 +752,15 @@
 
         </section>
 
+        <p class="join-team-wrapper">
+            ¿Querés trabajar con nosotros? <a
+                href="mailto:rrhh@somosrastro.com?subject=Postulación%20-%20Sumate%20al%20equipo%20de%20SOMOS&body=Hola!%20Me%20gustaría%20postularme%20para%20sumarme%20al%20equipo.%20Adjunto%20mi%20CV."
+                class="join-team-link">Sumate al equipo de SOMOS</a>
+        </p>
+
     </main>
+
+
 
 
     <!-- =====================================================
